@@ -1,0 +1,89 @@
+﻿<Window x:Class="BiznesProfiApp.View.Windows.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BiznesProfiApp.View.Windows"
+        mc:Ignorable="d"
+        Title="Authorization" Height="370" Width="300">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter" SourceName="btnAuthorization">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Width" TargetName="btnAuthorization">
+                        <DoubleAnimation From="170" To="175"
+                                         Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Height" TargetName="btnAuthorization">
+                        <DoubleAnimation From="40" To="43"
+                                         Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave" SourceName="btnAuthorization">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Width" TargetName="btnAuthorization">
+                        <DoubleAnimation From="175" To="170"
+                                         Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Height" TargetName="btnAuthorization">
+                        <DoubleAnimation From="43" To="40"
+                                         Duration="0:0:0.2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                        <RotateTransform Angle="215" CenterX="0.5" CenterY="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FFA2A49F"/>
+                <GradientStop Color="#FFF1DAC4" Offset="1"/>
+                <GradientStop Color="#FFE0D0C4" Offset="0.5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Авторизация" VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Center" FontSize="28"
+                   FontFamily="Rounded Mplus 1c Bold" Margin="0,0,0,10" Foreground="#FF481F0D"
+                   />
+        <TextBox  x:Name="txtboxLogin"
+            Grid.Row="1" Height="30" Width="230" Margin="0,15,0,0"
+            Style="{DynamicResource MainTextBoxStyle}"/>
+        <Label Grid.Row="1" Content="Логин:" FontFamily="Rounded Mplus 1c Regular"
+               FontSize="15"
+               Height="30" Width="100" Margin="0,0,120,35" Foreground="#FF481F0D"/>
+
+        <TextBox x:Name="txtboxPassword"
+            Grid.Row="2" Height="30" Width="230" Margin="0,15,0,0"
+            Style="{DynamicResource MainTextBoxStyle}"/>
+        <Label Grid.Row="2" Content="Пароль:" FontFamily="Rounded Mplus 1c regular"
+               FontSize="15"
+               Height="30" Width="100" Margin="0,0,120,35" Foreground="#FF481F0D"/>
+
+        <Button Style="{DynamicResource MainButtonStyle}" x:Name="btnAuthorization"
+                Grid.Row="3" Height="40" Width="170" Content="Войти"
+                FontSize="16" FontFamily="Rounded Mplus 1c Bold" />
+    </Grid>
+</Window>

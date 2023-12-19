@@ -2,8 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BiznesProfiApp"
-             StartupUri="MainWindow.xaml">
+             StartupUri="View/Windows/Authorization.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources\ResourceDictionarys\TextBoxDictionary.xaml"/>
+                <ResourceDictionary Source="Resources\ResourceDictionarys\ButtonDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

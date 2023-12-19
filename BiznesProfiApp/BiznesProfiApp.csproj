@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +64,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Resources\ResourceDictionarys\ButtonDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionarys\TextBoxDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,7 +84,56 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="dbEntities\BiznesProfiAppDBEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BiznesProfiAppDBEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\BiznesProfiAppDBEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\BiznesProfiAppDBEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BiznesProfiAppDBEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\Customer.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\DBStorrage.cs" />
+    <Compile Include="dbEntities\File.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\Other_contacts.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\Post.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\sp_helpdiagrams_Result.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\sysdiagrams.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\Task.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\Type_of_task.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbEntities\User.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -86,13 +156,43 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="dbEntities\BiznesProfiAppDBEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BiznesProfiAppDBEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="dbEntities\BiznesProfiAppDBEntities.edmx.diagram">
+      <DependentUpon>BiznesProfiAppDBEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\MPLUSRounded1c-Bold.ttf" />
+    <Resource Include="Resources\Fonts\MPLUSRounded1c-Medium.ttf" />
+    <Resource Include="Resources\Fonts\MPLUSRounded1c-Regular.ttf" />
+    <Resource Include="Resources\Fonts\MPLUSRounded1c-Light.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dbEntities\BiznesProfiAppDBEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BiznesProfiAppDBEntities.Context.cs</LastGenOutput>
+      <DependentUpon>BiznesProfiAppDBEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="dbEntities\BiznesProfiAppDBEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BiznesProfiAppDBEntities.edmx</DependentUpon>
+      <LastGenOutput>BiznesProfiAppDBEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
