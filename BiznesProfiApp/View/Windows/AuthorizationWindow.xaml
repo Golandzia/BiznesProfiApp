@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiznesProfiApp.View.Windows"
+        xmlns:local1="clr-namespace:BiznesProfiApp.ViewModel" d:DataContext="{d:DesignInstance Type=local1:AuthorizationWindowVM}"
         mc:Ignorable="d"
         Title="Authorization" Height="370" Width="300">
 
@@ -13,13 +14,13 @@
                 <BeginStoryboard>
                     <Storyboard TargetProperty="Width" TargetName="btnAuthorization">
                         <DoubleAnimation From="170" To="175"
-                                         Duration="0:0:0.2"/>
+                                         Duration="0:0:0.1"/>
                     </Storyboard>
                 </BeginStoryboard>
                 <BeginStoryboard>
                     <Storyboard TargetProperty="Height" TargetName="btnAuthorization">
                         <DoubleAnimation From="40" To="43"
-                                         Duration="0:0:0.2"/>
+                                         Duration="0:0:0.1"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger.Actions>
@@ -29,13 +30,13 @@
                 <BeginStoryboard>
                     <Storyboard TargetProperty="Width" TargetName="btnAuthorization">
                         <DoubleAnimation From="175" To="170"
-                                         Duration="0:0:0.2"/>
+                                         Duration="0:0:0.1"/>
                     </Storyboard>
                 </BeginStoryboard>
                 <BeginStoryboard>
                     <Storyboard TargetProperty="Height" TargetName="btnAuthorization">
                         <DoubleAnimation From="43" To="40"
-                                         Duration="0:0:0.2"/>
+                                         Duration="0:0:0.1"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger.Actions>
@@ -70,20 +71,22 @@
                    />
         <TextBox  x:Name="txtboxLogin"
             Grid.Row="1" Height="30" Width="230" Margin="0,15,0,0"
-            Style="{DynamicResource MainTextBoxStyle}"/>
+            Style="{DynamicResource MainTextBoxStyle}"
+            Text="{Binding Login}"/>
         <Label Grid.Row="1" Content="Логин:" FontFamily="Rounded Mplus 1c Regular"
                FontSize="15"
                Height="30" Width="100" Margin="0,0,120,35" Foreground="#FF481F0D"/>
 
         <TextBox x:Name="txtboxPassword"
             Grid.Row="2" Height="30" Width="230" Margin="0,15,0,0"
-            Style="{DynamicResource MainTextBoxStyle}"/>
+            Style="{DynamicResource MainTextBoxStyle}"
+            Text="{Binding Password}"/>
         <Label Grid.Row="2" Content="Пароль:" FontFamily="Rounded Mplus 1c regular"
                FontSize="15"
                Height="30" Width="100" Margin="0,0,120,35" Foreground="#FF481F0D"/>
 
         <Button Style="{DynamicResource MainButtonStyle}" x:Name="btnAuthorization"
-                Grid.Row="3" Height="40" Width="170" Content="Войти"
-                FontSize="16" FontFamily="Rounded Mplus 1c Bold" />
+                Grid.Row="3" Height="40" Width="170" Content="{Binding BtnDescription}"
+                FontSize="16" FontFamily="Rounded Mplus 1c Bold" Click="btnAuthorization_Click" />
     </Grid>
 </Window>

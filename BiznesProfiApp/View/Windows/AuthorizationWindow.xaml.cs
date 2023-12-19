@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiznesProfiApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,13 @@ namespace BiznesProfiApp.View.Windows
         public Authorization()
         {
             InitializeComponent();
+
+            this.DataContext = new ViewModel.AuthorizationWindowVM();
+        }
+
+        private void btnAuthorization_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as AuthorizationWindowVM).AuthInApp();
         }
     }
 }
