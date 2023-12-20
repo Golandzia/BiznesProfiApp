@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BiznesProfiApp.View.Windows"
         xmlns:local1="clr-namespace:BiznesProfiApp.ViewModel" d:DataContext="{d:DesignInstance Type=local1:AuthorizationWindowVM}"
         mc:Ignorable="d"
-        Title="Authorization" Height="370" Width="300">
+        Title="Authorization" Height="370" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="MouseEnter" SourceName="btnAuthorization">
@@ -54,9 +54,11 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </LinearGradientBrush.RelativeTransform>
-                <GradientStop Color="#FFA2A49F"/>
-                <GradientStop Color="#FFF1DAC4" Offset="1"/>
-                <GradientStop Color="#FFE0D0C4" Offset="0.5"/>
+                <GradientStop Color="#FFA9A0A0" Offset="0"/>
+                <GradientStop Color="#BFC5C2C4" Offset="0.25"/>
+                <GradientStop Color="#B2D3B9AC" Offset="1"/>
+                <GradientStop Color="#BFB9B3AE" Offset="0.5"/>
+                <GradientStop Color="#BFE1DED8" Offset="0.75"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
@@ -65,7 +67,8 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Авторизация" VerticalAlignment="Bottom" 
+        
+        <TextBlock Grid.Row="0" Text="Авторизация" VerticalAlignment="Bottom" 
                    HorizontalAlignment="Center" FontSize="28"
                    FontFamily="Rounded Mplus 1c Bold" Margin="0,0,0,10" Foreground="#FF481F0D"
                    />

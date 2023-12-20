@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BiznesProfiApp.dbEntities;
+using BiznesProfiApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,13 @@ namespace BiznesProfiApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
+            this.DataContext = new MainWindowVM(user);
         }
+
+       
+
     }
 }

@@ -68,6 +68,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\ResourceDictionarys\LabelDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ResourceDictionarys\StackPanelDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\ResourceDictionarys\TextBoxDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +140,7 @@
     </Compile>
     <Compile Include="ViewModel\AuthorizationWindowVM.cs" />
     <Compile Include="ViewModel\BaseVM.cs" />
+    <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="View\Windows\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
@@ -192,6 +201,8 @@
       <DependentUpon>BiznesProfiAppDBEntities.edmx</DependentUpon>
       <LastGenOutput>BiznesProfiAppDBEntities.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\CloseButtonActive.png" />
+    <Resource Include="Resources\Images\CloseButtonNotActive.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

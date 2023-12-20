@@ -74,7 +74,7 @@ namespace BiznesProfiApp.ViewModel
             BtnDescription = "Авторизация...";
             if(await Authorizate(Login, Password) != null)
             {
-                var appWindow = new MainWindow(/*тут нужно будет отправить того, кем мы авторизировались*/);
+                var appWindow = new MainWindow(_user);
                 appWindow.Show();
                 foreach (var item in App.Current.Windows)
                 {
