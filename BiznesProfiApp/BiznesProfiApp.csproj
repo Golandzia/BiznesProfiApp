@@ -201,8 +201,8 @@
       <DependentUpon>BiznesProfiAppDBEntities.edmx</DependentUpon>
       <LastGenOutput>BiznesProfiAppDBEntities.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\Images\CloseButtonActive.png" />
-    <Resource Include="Resources\Images\CloseButtonNotActive.png" />
+    <Resource Include="Resources\Images\filterActive.png" />
+    <Resource Include="Resources\Images\filterDisabled.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

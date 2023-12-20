@@ -172,7 +172,40 @@
                 </BeginStoryboard>
             </EventTrigger.Actions>
         </EventTrigger>
-        
+
+        <EventTrigger RoutedEvent="MouseEnter" SourceName="imgFilter">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Width" TargetName="imgFilter">
+                        <DoubleAnimation From="50" To="55"
+                                         Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Height" TargetName="imgFilter">
+                        <DoubleAnimation From="50" To="55"
+                                         Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave" SourceName="imgFilter">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Width" TargetName="imgFilter">
+                        <DoubleAnimation From="55" To="50"
+                                         Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="Height" TargetName="imgFilter">
+                        <DoubleAnimation From="55" To="50"
+                                         Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+
     </Window.Triggers>
 
     <Grid>
@@ -235,9 +268,23 @@
             <TextBox x:Name="txtboxSearch"
                      Style="{DynamicResource MainTextBoxStyle}"
                      Width="700" Height="50" Margin="30,0,0,0"
-                     >
-                
-            </TextBox>
+                     />
+            <Image Name="imgFilter"
+                   Height="50" Margin="20,0,0,0">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="/Resources/Images/filterDisabled.png"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsMouseOver, ElementName=imgFilter}" Value="True">
+                                <Setter Property="Source" Value="/Resources/Images/filterActive.png"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+                <Image.Effect>
+                    <BlurEffect Radius="2"/>
+                </Image.Effect>
+            </Image>
         </StackPanel>
         
     </Grid>
