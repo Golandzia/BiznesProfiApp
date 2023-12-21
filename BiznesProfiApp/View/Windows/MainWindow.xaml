@@ -314,6 +314,14 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
+                <DataGridTextColumn Header="Крайний срок" Width="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                                    FontSize="16" Binding="{Binding Deadline}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Ответственный" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
                                     FontSize="16" Binding="{Binding User.Full_name}">
                     <DataGridTextColumn.ElementStyle>

@@ -25,8 +25,8 @@
     </Style>
     <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}">
         <Setter Property="Background" Value="#00000000"/>
-        <Setter Property="Foreground" Value="#FF26456A"/>
-        <Setter Property="BorderBrush" Value="#FF688CAF"/>
+        <Setter Property="Foreground" Value="#FF481F0D"/>
+        <Setter Property="BorderBrush" Value="#FF897C77"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
