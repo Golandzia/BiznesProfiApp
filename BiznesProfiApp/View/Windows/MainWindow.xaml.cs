@@ -25,6 +25,7 @@ namespace BiznesProfiApp
         public MainWindow(User user)
         {
             InitializeComponent();
+
             this.DataContext = new MainWindowVM(user);
         }
 

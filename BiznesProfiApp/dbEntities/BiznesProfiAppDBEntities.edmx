@@ -60,6 +60,7 @@
           <Property Name="Files" Type="int" />
           <Property Name="Responsible" Type="int" Nullable="false" />
           <Property Name="Customer" Type="int" Nullable="false" />
+          <Property Name="Deadline" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Type_of_task">
           <Key>
@@ -282,6 +283,7 @@
           <Property Name="Files" Type="Int32" />
           <Property Name="Responsible" Type="Int32" Nullable="false" />
           <Property Name="Customer" Type="Int32" Nullable="false" />
+          <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Customer1" Relationship="Self.FK_Task_Customer" FromRole="Task" ToRole="Customer" />
           <NavigationProperty Name="File" Relationship="Self.FK_Task_File" FromRole="Task" ToRole="File" />
           <NavigationProperty Name="Type_of_task1" Relationship="Self.FK_Task_Type_of_task_task" FromRole="Task" ToRole="Type_of_task" />
@@ -521,6 +523,7 @@
                 <ScalarProperty Name="Files" ColumnName="Files" />
                 <ScalarProperty Name="Responsible" ColumnName="Responsible" />
                 <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

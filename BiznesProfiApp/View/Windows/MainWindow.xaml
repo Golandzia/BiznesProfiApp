@@ -286,6 +286,52 @@
                 </Image.Effect>
             </Image>
         </StackPanel>
+
+        <DataGrid x:Name="MainDataGrid" Grid.Row="3"
+                  Style="{DynamicResource DataGridStyle}"
+                  SelectedItem="{Binding SelectedTask}"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding Tasks}"
+                  Margin="3"
+                  MinRowHeight="30"
+                  VerticalContentAlignment="Center"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Тип задачи" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                                    FontSize="16" Binding="{Binding Type_of_task1.Type}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Краткое описание" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                                    FontSize="16" Binding="{Binding Short_description}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Ответственный" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                                    FontSize="16" Binding="{Binding User.Full_name}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Клиент" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                                    FontSize="16" Binding="{Binding Customer1.Full_name}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         
     </Grid>
 </Window>

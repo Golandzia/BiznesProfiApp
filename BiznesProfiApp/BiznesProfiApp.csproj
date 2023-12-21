@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\ResourceDictionarys\DataGridDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\ResourceDictionarys\LabelDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,21 +195,23 @@
     <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\filterActive.png" />
+    <Resource Include="Resources\Images\filterDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="dbEntities\BiznesProfiAppDBEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BiznesProfiAppDBEntities.Context.cs</LastGenOutput>
       <DependentUpon>BiznesProfiAppDBEntities.edmx</DependentUpon>
+      <LastGenOutput>BiznesProfiAppDBEntities.Context.cs</LastGenOutput>
     </Content>
     <Content Include="dbEntities\BiznesProfiAppDBEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BiznesProfiAppDBEntities.edmx</DependentUpon>
       <LastGenOutput>BiznesProfiAppDBEntities.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\Images\filterActive.png" />
-    <Resource Include="Resources\Images\filterDisabled.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

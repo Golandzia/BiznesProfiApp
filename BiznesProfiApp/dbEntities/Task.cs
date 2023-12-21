@@ -21,6 +21,7 @@ namespace BiznesProfiApp.dbEntities
         public Nullable<int> Files { get; set; }
         public int Responsible { get; set; }
         public int Customer { get; set; }
+        public System.DateTime Deadline { get; set; }
     
         public virtual Customer Customer1 { get; set; }
         public virtual File File { get; set; }
