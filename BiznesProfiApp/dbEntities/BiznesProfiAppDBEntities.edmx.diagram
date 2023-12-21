@@ -19,6 +19,8 @@
         <AssociationConnector Association="BiznesProfiAppModel.FK_User_Post" ManuallyRouted="false" />
         <AssociationConnector Association="BiznesProfiAppModel.FK_Task_Type_of_task_task" ManuallyRouted="false" />
         <AssociationConnector Association="BiznesProfiAppModel.FK_Task_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BiznesProfiAppModel.Task_status" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="BiznesProfiAppModel.FK_Task_Task_status" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

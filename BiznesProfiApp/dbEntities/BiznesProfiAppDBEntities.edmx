@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище BiznesProfiAppModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище BiznesProfiAppModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="ID" />
@@ -61,6 +61,14 @@
           <Property Name="Responsible" Type="int" Nullable="false" />
           <Property Name="Customer" Type="int" Nullable="false" />
           <Property Name="Deadline" Type="datetime" Nullable="false" />
+          <Property Name="Task_status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Task_status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Type_of_task">
           <Key>
@@ -114,6 +122,30 @@
             </Principal>
             <Dependent Role="Task">
               <PropertyRef Name="Files" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Task_status">
+          <End Role="Task_status" Type="Self.Task_status" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task_status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Task_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Type_of_task">
+          <End Role="Type_of_task" Type="Self.Type_of_task" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_of_task">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Type_of_task" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -191,6 +223,7 @@
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task_status" EntityType="Self.Task_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type_of_task" EntityType="Self.Type_of_task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Customer_Other_contacts" Association="Self.FK_Customer_Other_contacts">
@@ -203,6 +236,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_Task_File" Association="Self.FK_Task_File">
             <End Role="File" EntitySet="File" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Task_status" Association="Self.FK_Task_Task_status">
+            <End Role="Task_status" EntitySet="Task_status" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Type_of_task" Association="Self.FK_Task_Type_of_task">
+            <End Role="Type_of_task" EntitySet="Type_of_task" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
           <AssociationSet Name="FK_Task_Type_of_task_task" Association="Self.FK_Task_Type_of_task_task">
@@ -218,8 +259,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BiznesProfiAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -288,6 +328,8 @@
           <NavigationProperty Name="File" Relationship="Self.FK_Task_File" FromRole="Task" ToRole="File" />
           <NavigationProperty Name="Type_of_task1" Relationship="Self.FK_Task_Type_of_task_task" FromRole="Task" ToRole="Type_of_task" />
           <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
+          <Property Name="Task_status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Task_status1" Relationship="BiznesProfiAppModel.FK_Task_Task_status" FromRole="Task" ToRole="Task_status" />
         </EntityType>
         <EntityType Name="Type_of_task">
           <Key>
@@ -446,6 +488,11 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Task_status" EntityType="BiznesProfiAppModel.Task_status" />
+          <AssociationSet Name="FK_Task_Task_status" Association="BiznesProfiAppModel.FK_Task_Task_status">
+            <End Role="Task_status" EntitySet="Task_status" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -458,6 +505,26 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Task_status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Task" Relationship="BiznesProfiAppModel.FK_Task_Task_status" FromRole="Task_status" ToRole="Task" />
+        </EntityType>
+        <Association Name="FK_Task_Task_status">
+          <End Type="BiznesProfiAppModel.Task_status" Role="Task_status" Multiplicity="1" />
+          <End Type="BiznesProfiAppModel.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task_status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Task_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -516,6 +583,7 @@
           <EntitySetMapping Name="Task">
             <EntityTypeMapping TypeName="BiznesProfiAppModel.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Task_status" ColumnName="Task_status" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Type_of_task" ColumnName="Type_of_task" />
                 <ScalarProperty Name="Short_description" ColumnName="Short_description" />
@@ -572,6 +640,14 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище BiznesProfiAppModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище BiznesProfiAppModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Task_status">
+            <EntityTypeMapping TypeName="BiznesProfiAppModel.Task_status">
+              <MappingFragment StoreEntitySet="Task_status">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

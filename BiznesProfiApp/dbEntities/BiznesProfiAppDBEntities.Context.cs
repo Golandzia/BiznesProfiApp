@@ -35,6 +35,7 @@ namespace BiznesProfiApp.dbEntities
         public virtual DbSet<Task> Task { get; set; }
         public virtual DbSet<Type_of_task> Type_of_task { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Task_status> Task_status { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

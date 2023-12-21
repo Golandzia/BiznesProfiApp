@@ -12,22 +12,18 @@ namespace BiznesProfiApp.dbEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class Task
+    public partial class Task_status
     {
-        public int ID { get; set; }
-        public int Type_of_task { get; set; }
-        public string Short_description { get; set; }
-        public string Full_task { get; set; }
-        public Nullable<int> Files { get; set; }
-        public int Responsible { get; set; }
-        public int Customer { get; set; }
-        public System.DateTime Deadline { get; set; }
-        public int Task_status { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Task_status()
+        {
+            this.Task = new HashSet<Task>();
+        }
     
-        public virtual Customer Customer1 { get; set; }
-        public virtual File File { get; set; }
-        public virtual Type_of_task Type_of_task1 { get; set; }
-        public virtual User User { get; set; }
-        public virtual Task_status Task_status1 { get; set; }
+        public int ID { get; set; }
+        public string Value { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Task> Task { get; set; }
     }
 }

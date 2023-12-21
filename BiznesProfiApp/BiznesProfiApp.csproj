@@ -136,6 +136,9 @@
     <Compile Include="dbEntities\Task.cs">
       <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="dbEntities\Task_status.cs">
+      <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="dbEntities\Type_of_task.cs">
       <DependentUpon>BiznesProfiAppDBEntities.tt</DependentUpon>
     </Compile>
