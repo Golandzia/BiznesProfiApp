@@ -248,15 +248,15 @@
             Height="Auto" VerticalAlignment="Top"
             >
             <Button x:Name="btnTasks"
-                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Задачи" />
+                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Задачи" Click="btnTasks_Click" />
             <Button x:Name="btnOverdued"
-                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Просроченные"/>
+                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Просроченные" Click="btnOverdued_Click"/>
             <Button x:Name="btnTasksInProcess"
-                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Выполняются"/>
+                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Выполняются" Click="btnTasksInProcess_Click"/>
             <Button Name="btnTasksComplited"
-                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Выполнены"/>
+                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Выполнены" Click="btnTasksComplited_Click"/>
             <Button x:Name="btnTasksDelayed"
-                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Отложенные"/>
+                Style="{DynamicResource ButtonStyleMainWindowBar}" Content="Отложенные" Click="btnTasksDelayed_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10,0,0">
@@ -269,22 +269,24 @@
                      Style="{DynamicResource MainTextBoxStyle}"
                      Width="700" Height="50" Margin="30,0,0,0"
                      />
-            <Image Name="imgFilter"
-                   Height="50" Margin="20,0,0,0">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="/Resources/Images/filterDisabled.png"/>
+            
+            <Button Template="{DynamicResource FilterButtonTemplateStyle}" Name="imgFilter" Height="50" Width="50" Margin="20,0,0,0" Foreground="#00000000" BorderBrush="#00707070" Click="imgFilter_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsMouseOver, ElementName=imgFilter}" Value="True">
-                                <Setter Property="Source" Value="/Resources/Images/filterActive.png"/>
+                            <DataTrigger Binding="{Binding IsMouseOver, ElementName=imgFilter}" Value="False">
+                                <Setter Property="Button.Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/Resources/Images/filterDisabled.png"/>
+                                    </Setter.Value>
+                                </Setter>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </Image.Style>
-                <Image.Effect>
-                    <BlurEffect Radius="2"/>
-                </Image.Effect>
-            </Image>
+                </Button.Style>
+
+            </Button>
+            
         </StackPanel>
 
         <DataGrid x:Name="MainDataGrid" Grid.Row="3"
@@ -298,14 +300,6 @@
                   VerticalContentAlignment="Center"
                   >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Тип задачи" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
-                                    FontSize="16" Binding="{Binding Type_of_task1.Type}" >
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="TextWrapping" Value="Wrap"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
                 <DataGridTextColumn Header="Краткое описание" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
                                     FontSize="16" Binding="{Binding Short_description}">
                     <DataGridTextColumn.ElementStyle>
@@ -314,7 +308,15 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Крайний срок" Width="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                <DataGridTextColumn Header="Тип задачи" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                                    FontSize="16" Binding="{Binding Type_of_task1.Type}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Крайний срок" Width="120" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
                                     FontSize="16" Binding="{Binding Deadline}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -322,8 +324,8 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Ответственный" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
-                                    FontSize="16" Binding="{Binding User.Full_name}">
+                <DataGridTextColumn Header="Статус" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                                    FontSize="16" Binding="{Binding Task_status1.Value}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap"/>
@@ -332,6 +334,14 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Клиент" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
                                     FontSize="16" Binding="{Binding Customer1.Full_name}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Ответственный" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"
+                                    FontSize="16" Binding="{Binding User.Full_name}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap"/>

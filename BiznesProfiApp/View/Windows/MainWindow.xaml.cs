@@ -29,7 +29,34 @@ namespace BiznesProfiApp
             this.DataContext = new MainWindowVM(user);
         }
 
-       
+        private void btnTasks_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainWindowVM).DisplayAllTasks();
+        }
 
+        private void btnOverdued_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainWindowVM).DisplayOverduedTasks();
+        }
+
+        private void btnTasksInProcess_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainWindowVM).DisplayTasksInProcess();
+        }
+
+        private void btnTasksComplited_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainWindowVM).DisplayCompleatedTasks();
+        }
+
+        private void btnTasksDelayed_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainWindowVM).DisplayDelayedTasks();
+        }
+
+        private void imgFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

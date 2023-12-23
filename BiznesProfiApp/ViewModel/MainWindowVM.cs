@@ -52,5 +52,73 @@ namespace BiznesProfiApp.ViewModel
             result.ForEach(elem => Tasks?.Add(elem));
 
         }
+
+        public void DisplayAllTasks()
+        {
+            Tasks = new ObservableCollection<Task>();
+            var result = DBStorrage.DB_s.Task.ToList();
+            result.ForEach(elem => Tasks?.Add(elem));
+
+        }
+        public void DisplayOverduedTasks()
+        {
+            Tasks = new ObservableCollection<Task>();
+            var result = DBStorrage.DB_s.Task.ToList();
+            result.ForEach(elem => Tasks?.Add(elem));
+            ObservableCollection<Task> temp = new ObservableCollection<Task>();
+            foreach (var elem in Tasks)
+            {
+                if(elem.Task_status1.Value == "Просрочено")
+                {
+                    temp?.Add(elem);
+                }
+            }
+            Tasks = temp;
+        }
+        public void DisplayTasksInProcess()
+        {
+            Tasks = new ObservableCollection<Task>();
+            var result = DBStorrage.DB_s.Task.ToList();
+            result.ForEach(elem => Tasks?.Add(elem));
+            ObservableCollection<Task> temp = new ObservableCollection<Task>();
+            foreach (var elem in Tasks)
+            {
+                if (elem.Task_status1.Value == "Выполняется")
+                {
+                    temp?.Add(elem);
+                }
+            }
+            Tasks = temp;
+        }
+        public void DisplayCompleatedTasks()
+        {
+            Tasks = new ObservableCollection<Task>();
+            var result = DBStorrage.DB_s.Task.ToList();
+            result.ForEach(elem => Tasks?.Add(elem));
+            ObservableCollection<Task> temp = new ObservableCollection<Task>();
+            foreach (var elem in Tasks)
+            {
+                if (elem.Task_status1.Value == "Выполнено")
+                {
+                    temp?.Add(elem);
+                }
+            }
+            Tasks = temp;
+        }
+        public void DisplayDelayedTasks()
+        {
+            Tasks = new ObservableCollection<Task>();
+            var result = DBStorrage.DB_s.Task.ToList();
+            result.ForEach(elem => Tasks?.Add(elem));
+            ObservableCollection<Task> temp = new ObservableCollection<Task>();
+            foreach (var elem in Tasks)
+            {
+                if (elem.Task_status1.Value == "Отложено")
+                {
+                    temp?.Add(elem);
+                }
+            }
+            Tasks = temp;
+        }
     }
 }
