@@ -56,7 +56,7 @@ namespace BiznesProfiApp
 
         private void imgFilter_Click(object sender, RoutedEventArgs e)
         {
-
+            (DataContext as MainWindowVM).Searching();
         }
     }
 }

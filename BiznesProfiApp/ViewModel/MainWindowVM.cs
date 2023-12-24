@@ -14,8 +14,18 @@ namespace BiznesProfiApp.ViewModel
         private User _whoAuthorizated = null;
         private Task _selectedTask;
         private ObservableCollection<Task> _tasks;
+        private string _search;
 
 
+        public string Search
+        {
+            get => _search;
+            set
+            {
+                _search = value;
+                OnPropertyChanged(nameof(Search));
+            }
+        }
         public Task SelectedTask
         {
             get => _selectedTask;
@@ -114,6 +124,22 @@ namespace BiznesProfiApp.ViewModel
             foreach (var elem in Tasks)
             {
                 if (elem.Task_status1.Value == "Отложено")
+                {
+                    temp?.Add(elem);
+                }
+            }
+            Tasks = temp;
+        }
+        public void Searching()
+        {
+            Tasks = new ObservableCollection<Task>();
+            var result = DBStorrage.DB_s.Task.ToList();
+            result.ForEach(elem => Tasks?.Add(elem));
+            ObservableCollection<Task> temp = new ObservableCollection<Task>();
+            foreach (var elem in Tasks)
+            {
+                if (elem.Short_description.Contains(Search) || elem.Type_of_task1.Type.Contains(Search) || elem.Deadline.ToString().Contains(Search) ||
+                    elem.Task_status1.Value.Contains(Search) || elem.Customer1.Full_name.Contains(Search) || elem.User.Full_name.Contains(Search))
                 {
                     temp?.Add(elem);
                 }
