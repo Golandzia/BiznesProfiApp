@@ -302,6 +302,7 @@
                   Margin="3"
                   MinRowHeight="30"
                   VerticalContentAlignment="Center"
+                  MouseDoubleClick="MainDataGrid_MouseDoubleClick"
                   >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Краткое описание" MinWidth="120" MaxWidth="380" FontFamily="Rounded Mplus 1c"

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BiznesProfiApp.View.Windows"
+        xmlns:local="clr-namespace:BiznesProfiApp.View.Windows" xmlns:viewmodel="clr-namespace:BiznesProfiApp.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ViewEditTaskWindowVM}"
         mc:Ignorable="d"
         Title="ViewEditTaskWindow" Height="800" Width="1500" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
@@ -35,7 +35,9 @@
             <Label  Content="Краткое описание: "
                Style="{DynamicResource MainLabelStyle}" Margin="30,20,0,0"/>
             <TextBox Style="{DynamicResource MainTextBoxStyle}"
-                     Height="50" Width="800" Margin="10,20,0,0"/>
+                     Height="50" Width="800" Margin="10,20,0,0"
+                     Text="{Binding ShortDescription}"
+                     FontSize="16"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Border Grid.Row="1" BorderBrush="#00000000" BorderThickness="2"
@@ -48,12 +50,19 @@
 
                     <StackPanel Grid.Row="0" Orientation="Horizontal">
                         <Label Style="{DynamicResource MainLabelStyle}" Content="Срок:" Margin="40,10,0,10"/>
-                        <TextBox Style="{DynamicResource MainTextBoxStyle}" 
+                        <!--<TextBox Style="{DynamicResource MainTextBoxStyle}" 
                                  Width="300" Height="40" Background="#FFE7E3DE"
-                                 Margin="20,10,0,10" />
+                                 Margin="20,10,0,10"
+                                 Text="{Binding SqlDateTimeDeadline}"/>-->
+                        <DatePicker Width="300" Height="40" SelectedDate="{Binding SqlDateTimeDeadline}"
+                                    FontSize="23"/>
+                        
                         <Line VerticalAlignment="Bottom" X1="-435" Y1="0" X2="555" Y2="0" Stroke="#FF818181" StrokeThickness="2" Margin="0,5,0,0" />
                     </StackPanel>
-                    <TextBox Style="{DynamicResource TextBoxBigStyle}" Grid.Row="1" Margin="0,0,0,40" Padding="10,10,10,10" SelectionBrush="#000078D7" BorderBrush="#00ABADB3"/>
+                    <TextBox Style="{DynamicResource TextBoxBigStyle}"
+                             Grid.Row="1" Margin="0,0,0,40" Padding="10,10,10,10"
+                             SelectionBrush="#000078D7" BorderBrush="#00ABADB3"
+                             Text="{Binding FullDescription}" FontSize="16" TextWrapping="Wrap" />
                 </Grid>
             </Border>
             <Border Grid.Row="1" BorderBrush="#00000000" BorderThickness="2"
@@ -67,18 +76,38 @@
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" Margin="10,15,0,0">
                         <Label Style="{DynamicResource MainLabelStyle}" Content="Тип:"/>
-                        <ComboBox Height="40" Width="210" Margin="50,0,0,0"/>
+                        <ComboBox Height="40" Width="210" Margin="50,0,0,0"
+                                  SelectedItem="{Binding SelectedTypeOfTask}"
+                                  ItemsSource="{Binding AllTypesOfTask}"
+                                  DisplayMemberPath="Type"
+                                  VerticalContentAlignment="Center"
+                                  FontSize="15"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10,30,0,0">
                         <Label Style="{DynamicResource MainLabelStyle}" Content="Клиент:"/>
-                        <ComboBox Height="40" Width="210" Margin="10,0,0,0"/>
+                        <ComboBox Height="40" Width="210" Margin="10,0,0,0"
+                                  SelectedItem="{Binding SelectedCustomer}"
+                                  ItemsSource="{Binding AllCustomers}"
+                                  DisplayMemberPath="Full_name"
+                                  VerticalContentAlignment="Center"
+                                  FontSize="15"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Grid.Row="2" Margin="10,30,0,0">
-                        <ComboBox Height="40" Width="310" Margin="10,0,10,0" />
+                        <ComboBox Height="40" Width="310" Margin="10,0,10,0"
+                                  SelectedItem="{Binding SelectedResponsible}"
+                                  ItemsSource="{Binding AllResponsibleUsers}"
+                                  DisplayMemberPath="Full_name"
+                                  VerticalContentAlignment="Center"
+                                  FontSize="15"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="10,30,0,0">
                         <Label Style="{DynamicResource MainLabelStyle}" Content="Статус:"/>
-                        <ComboBox Height="40" Width="210" Margin="10,0,0,0"/>
+                        <ComboBox Height="40" Width="210" Margin="10,0,0,0"
+                                  SelectedItem="{Binding SelectedTaskStatus}"
+                                  ItemsSource="{Binding AllTaskStatuses}"
+                                  DisplayMemberPath="Value"
+                                  VerticalContentAlignment="Center"
+                                  FontSize="15"/>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -90,7 +119,7 @@
             <Button Style="{DynamicResource MainButtonStyle}" Content="Выполнено/Выполнять" Height="50" Width="200"
                     FontSize="22" Margin="50,0,0,0"/>
             <Button Style="{DynamicResource MainButtonStyle}" Content="Сохранить" Height="50" Width="200"
-                    FontSize="22" Margin="760,0,0,0"/>
+                    FontSize="22" Margin="760,0,0,0" Click="Button_Click"/>
         </StackPanel>
 
     </Grid>

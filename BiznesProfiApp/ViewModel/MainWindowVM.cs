@@ -1,10 +1,12 @@
 ﻿using BiznesProfiApp.dbEntities;
+using BiznesProfiApp.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Task = BiznesProfiApp.dbEntities.Task;
 
 namespace BiznesProfiApp.ViewModel
@@ -61,6 +63,13 @@ namespace BiznesProfiApp.ViewModel
             var result = DBStorrage.DB_s.Task.ToList();
             result.ForEach(elem => Tasks?.Add(elem));
 
+        }
+
+        public void OpenElement(Task task)
+        {
+            var appWindow = new ViewEditTaskWindow(task);
+            appWindow.Show();
+            
         }
 
         public void DisplayAllTasks()

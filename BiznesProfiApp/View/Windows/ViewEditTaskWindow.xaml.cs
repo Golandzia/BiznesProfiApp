@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiznesProfiApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,16 @@ namespace BiznesProfiApp.View.Windows
     /// </summary>
     public partial class ViewEditTaskWindow : Window
     {
-        public ViewEditTaskWindow()
+        public ViewEditTaskWindow(dbEntities.Task task)
         {
             InitializeComponent();
+
+            this.DataContext = new ViewEditTaskWindowVM(task);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as ViewEditTaskWindowVM).AddOrEditTask();
         }
     }
 }

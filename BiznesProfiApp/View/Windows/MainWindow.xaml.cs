@@ -61,7 +61,12 @@ namespace BiznesProfiApp
 
         private void btnCreateTask_Click(object sender, RoutedEventArgs e)
         {
+            (DataContext as MainWindowVM).OpenElement(null);
+        }
 
+        private void MainDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            (DataContext as MainWindowVM).OpenElement((DataContext as MainWindowVM).SelectedTask);
         }
     }
 }
