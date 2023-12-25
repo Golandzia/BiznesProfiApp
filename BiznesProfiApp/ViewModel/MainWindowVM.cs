@@ -132,19 +132,23 @@ namespace BiznesProfiApp.ViewModel
         }
         public void Searching()
         {
-            Tasks = new ObservableCollection<Task>();
-            var result = DBStorrage.DB_s.Task.ToList();
-            result.ForEach(elem => Tasks?.Add(elem));
-            ObservableCollection<Task> temp = new ObservableCollection<Task>();
-            foreach (var elem in Tasks)
+            try
             {
-                if (elem.Short_description.Contains(Search) || elem.Type_of_task1.Type.Contains(Search) || elem.Deadline.ToString().Contains(Search) ||
-                    elem.Task_status1.Value.Contains(Search) || elem.Customer1.Full_name.Contains(Search) || elem.User.Full_name.Contains(Search))
+                Tasks = new ObservableCollection<Task>();
+                var result = DBStorrage.DB_s.Task.ToList();
+                result.ForEach(elem => Tasks?.Add(elem));
+                ObservableCollection<Task> temp = new ObservableCollection<Task>();
+                foreach (var elem in Tasks)
                 {
-                    temp?.Add(elem);
+                    if (elem.Short_description.Contains(Search) || elem.Type_of_task1.Type.Contains(Search) || elem.Deadline.ToString().Contains(Search) ||
+                        elem.Task_status1.Value.Contains(Search) || elem.Customer1.Full_name.Contains(Search) || elem.User.Full_name.Contains(Search))
+                    {
+                        temp?.Add(elem);
+                    }
                 }
+                Tasks = temp;
             }
-            Tasks = temp;
+            catch { }
         }
     }
 }

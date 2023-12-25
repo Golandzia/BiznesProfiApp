@@ -58,5 +58,10 @@ namespace BiznesProfiApp
         {
             (DataContext as MainWindowVM).Searching();
         }
+
+        private void btnCreateTask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
