@@ -64,7 +64,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\CreateCustomerWindowVM.cs" />
     <Compile Include="ViewModel\ViewEditTaskWindowVM.cs" />
+    <Compile Include="View\Windows\CreateClientWindow.xaml.cs">
+      <DependentUpon>CreateClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\ViewEditTaskWindow.xaml.cs">
       <DependentUpon>ViewEditTaskWindow.xaml</DependentUpon>
     </Compile>
@@ -89,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\AuthorizationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\CreateClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

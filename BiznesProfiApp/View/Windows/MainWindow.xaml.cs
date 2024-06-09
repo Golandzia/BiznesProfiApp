@@ -68,5 +68,10 @@ namespace BiznesProfiApp
         {
             (DataContext as MainWindowVM).OpenElement((DataContext as MainWindowVM).SelectedTask);
         }
+
+        private void btnCreateCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainWindowVM).AddClient();
+        }
     }
 }

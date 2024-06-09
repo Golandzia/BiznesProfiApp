@@ -57,12 +57,12 @@
                         <DatePicker Width="300" Height="40" SelectedDate="{Binding SqlDateTimeDeadline}"
                                     FontSize="23"/>
                         
-                        <Line VerticalAlignment="Bottom" X1="-435" Y1="0" X2="555" Y2="0" Stroke="#FF818181" StrokeThickness="2" Margin="0,5,0,0" />
+                        <Line VerticalAlignment="Bottom" X1="-415" Y1="0" X2="575" Y2="0" Stroke="#FF818181" StrokeThickness="2" Margin="0,5,0,0" />
                     </StackPanel>
                     <TextBox Style="{DynamicResource TextBoxBigStyle}"
                              Grid.Row="1" Margin="0,0,0,40" Padding="10,10,10,10"
                              SelectionBrush="#000078D7" BorderBrush="#00ABADB3"
-                             Text="{Binding FullDescription}" FontSize="16" TextWrapping="Wrap" />
+                             Text="{Binding FullDescription}" FontSize="16" TextWrapping="Wrap" AcceptsReturn="True" />
                 </Grid>
             </Border>
             <Border Grid.Row="1" BorderBrush="#00000000" BorderThickness="2"
@@ -116,8 +116,8 @@
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Button Style="{DynamicResource MainButtonStyle}" Content="Отложить" Height="50" Width="200"
                     FontSize="22" Margin="50,0,0,0"/>
-            <Button Style="{DynamicResource MainButtonStyle}" Content="Выполнено/Выполнять" Height="50" Width="200"
-                    FontSize="22" Margin="50,0,0,0"/>
+            <Button Style="{DynamicResource MainButtonStyle}" Content="Выполнено" Height="50" Width="200"
+                    FontSize="22" Margin="50,0,0,0" Click="Button_Click_1"/>
             <Button Style="{DynamicResource MainButtonStyle}" Content="Сохранить" Height="50" Width="200"
                     FontSize="22" Margin="760,0,0,0" Click="Button_Click"/>
         </StackPanel>

@@ -16,25 +16,19 @@ using System.Windows.Shapes;
 namespace BiznesProfiApp.View.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для ViewEditTaskWindow.xaml
+    /// Логика взаимодействия для CreateClientWindow.xaml
     /// </summary>
-    public partial class ViewEditTaskWindow : Window
+    public partial class CreateClientWindow : Window
     {
-        public ViewEditTaskWindow(dbEntities.Task task)
+        public CreateClientWindow()
         {
             InitializeComponent();
-
-            this.DataContext = new ViewEditTaskWindowVM(task);
+            this.DataContext = new CreateCustomerWindowVM();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (DataContext as ViewEditTaskWindowVM).AddOrEditTask();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            (DataContext as ViewEditTaskWindowVM).AddOrEditTask();
+            (DataContext as CreateCustomerWindowVM).AddEntityToDB();
         }
     }
 }

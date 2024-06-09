@@ -74,6 +74,7 @@ namespace BiznesProfiApp.ViewModel
 
         public void DisplayAllTasks()
         {
+            Tasks.Clear();
             Tasks = new ObservableCollection<Task>();
             var result = DBStorrage.DB_s.Task.ToList();
             result.ForEach(elem => Tasks?.Add(elem));
@@ -156,6 +157,15 @@ namespace BiznesProfiApp.ViewModel
                     }
                 }
                 Tasks = temp;
+            }
+            catch { }
+        }
+        public void AddClient()
+        {
+            try
+            {
+                var window = new CreateClientWindow();
+                window.Show();
             }
             catch { }
         }
